@@ -1,0 +1,167 @@
+@startuml
+class mvc.model.cards.mailcards.MoveToDealBuyer {
++ int action(Player,Position[])
+}
+class mvc.model.position.Start {
+}
+class mvc.model.position.PayDayPosition {
++ void action(Player,int,int)
+}
+class mvc.model.cards.mailcards.Charity {
++ void action(Player,Jackpot)
+}
+class mvc.model.Dice {
+- int number
+- boolean roll
++ void setNumber(int)
++ int getNumber()
++ void setRoll(boolean)
++ boolean getRoll()
++ int rollTheDice()
+}
+class mvc.model.cards.mailcards.PayTheNeighbor {
++ void action(Player)
+}
+class mvc.model.position.Sweepstakes {
++ void action(Player,int)
+}
+class mvc.model.cards.MailCardsStack {
+- ArrayList<MailCard> mailCardStack
++ void push(MailCard)
++ MailCard pop()
++ void suffleCardStack()
++ boolean isStackEmpty()
+}
+class mvc.model.cards.AllCardsStack {
+- ArrayList<Card> rejectedCardStack
++ void push(Card)
++ void popAndSeperate(MailCardsStack,DealCardsStack)
++ boolean isStackEmpty()
+}
+abstract class mvc.model.cards.MailCard {
++ void action(Player)
+}
+class mvc.model.Player {
+- int balance
+- int bills
+- int loans
+- int monthsCounter
+- String name
+- ArrayList<DealCard> playerCards
+- Dice playerDice
+- Player opponent
+- boolean playerTurn
+- boolean finish
+- boolean pending
+- int position
++ void setBalance(int)
++ int getBalance()
++ void setLoans(int)
++ int getLoans()
++ void setBills(int)
++ int getBills()
++ String getName()
++ void setMonthsCounter(int)
++ int getMonthsCounter()
++ void setOpponent(Player)
++ Player getOpponent()
++ void setTurn(boolean)
++ boolean getTurn()
++ Dice getDice()
++ void setFinish(boolean)
++ boolean getFinish()
++ void setPending(boolean)
++ boolean getPending()
++ boolean noDealCards()
++ void takeCard(DealCard)
++ DealCard sellCard()
++ void setPosition(int)
++ int getPosition()
+}
+class mvc.model.position.FamilyCasino {
++ boolean action(Player,Jackpot)
+}
+class mvc.model.cards.mailcards.Advertisement {
+}
+class mvc.model.position.YardSale {
++ void action(Player,int,DealCard)
+}
+class mvc.model.position.RadioContest {
+}
+abstract class mvc.model.cards.Card {
+- String image
+- int money
+- String text
++ String getImage()
++ int getMoney()
++ String getText()
++ {abstract}void action(Player)
+}
+class mvc.model.cards.mailcards.Bill {
++ void action(Player)
+}
+class mvc.model.position.Buyer {
+}
+class mvc.model.position.Lottery {
+}
+class mvc.model.cards.DealCard {
+- int sell
++ int getSell()
++ void action(Player)
+}
+class mvc.model.position.DealPosition {
+}
+class mvc.model.cards.mailcards.TakeFromNeighbor {
++ void action(Player)
+}
+abstract class mvc.model.position.Position {
+- int index
+- String name
+- String image
++ void setIndex(int)
++ int getIndex()
++ void setName(String)
++ String getName()
++ String getImage()
++ boolean isThursday()
++ boolean isSunday()
+}
+class mvc.model.Jackpot {
+- int money
++ void setMoney(int)
++ int getMoney()
++ int jackpotAward()
++ String toString()
+}
+class mvc.model.cards.DealCardsStack {
+- ArrayList<DealCard> dealCardStack
++ void push(DealCard)
++ DealCard pop()
++ void suffleCardStack()
++ boolean isStackEmpty()
+}
+class mvc.model.position.MailCardPosition {
+- boolean draw
++ boolean drawCard()
+}
+
+
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.MoveToDealBuyer
+mvc.model.position.Position <|-- mvc.model.position.Start
+mvc.model.position.Position <|-- mvc.model.position.PayDayPosition
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.Charity
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.PayTheNeighbor
+mvc.model.position.Position <|-- mvc.model.position.Sweepstakes
+mvc.model.cards.Card <|-- mvc.model.cards.MailCard
+mvc.model.position.Position <|-- mvc.model.position.FamilyCasino
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.Advertisement
+mvc.model.position.Position <|-- mvc.model.position.YardSale
+mvc.model.position.Position <|-- mvc.model.position.RadioContest
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.Bill
+mvc.model.position.Position <|-- mvc.model.position.Buyer
+mvc.model.position.Position <|-- mvc.model.position.Lottery
+mvc.model.cards.Card <|-- mvc.model.cards.DealCard
+mvc.model.position.Position <|-- mvc.model.position.DealPosition
+mvc.model.cards.MailCard <|-- mvc.model.cards.mailcards.TakeFromNeighbor
+mvc.model.position.Position <|-- mvc.model.position.MailCardPosition
+@enduml

@@ -1,0 +1,125 @@
+@startuml
+class mvc.view.MonthsToPlayWindow {
+~ ImageIcon image
+~ String months
++ String getMonths()
+}
+class mvc.view.SundayWindow {
+~ ImageIcon image
+~ int bet
++ int getBet()
+}
+class mvc.view.JLayeredPaneExtension {
+- Image image
++ void setImage(Image)
++ void paintComponent(Graphics)
+}
+class mvc.view.Window {
+~ ImageIcon icon
+~ int option
++ int getOption()
+}
+class mvc.view.ThursdayWindow {
+~ ImageIcon image
+~ int bet
++ int getBet()
+}
+class mvc.view.LotteryWindow {
+~ ImageIcon image
+~ String bet
++ String getBet()
+}
+class mvc.view.Game {
++ {static} void main(String[])
+}
+class mvc.view.LoanWindow {
+~ ImageIcon image
+~ String loan
++ String getLoanOption()
+}
+class mvc.view.View {
+~ Dimension screenSize
+- int width
+- int height
+- JLayeredPaneExtension panel
+- URL imageURL
+- Image image
+~ ImageIcon ins
+- JDesktopPane InfoBox
+- JLabel payDayImage
+- JButton dealCards
+- JTextField balance1Text
+- JMenu menu
+- JDesktopPane[] position
+~ JLayeredPane[] pawn_position
+~ int choiseP1
+- int counter
+- boolean radioPos
+- boolean lotteryPos
+- ClassLoader cldr
+~ Controller controller
++ void initComponents()
+- void start()
++ void newGame()
++ void setInfobox()
++ void boardPositions()
++ void menuInitialize()
++ void playerPanel()
++ void mailCardGfxAction(Player,MailCard)
++ void Sunday(Player)
++ void Thursday(Player)
++ void playerMove(ActionEvent)
+- void positionGraphics(Player,int)
++ void getLoan(Player)
++ void playerDealCards(Player)
+- void paintPlayer()
++ void paintPawn(String,int)
++ void paintJackpot()
+- void paintInfoBox(String)
+- void paintDice(String,int)
++ int showDealCard(DealCard,String)
++ void showMailCard(Card)
+~ {static} ImageIcon getImageScaled(String,int,int)
++ void startingPlayer()
+}
+class mvc.view.View.cardListener {
+~ Player player
++ void actionPerformed(ActionEvent)
+}
+class mvc.view.View.buttonListener1 {
++ void actionPerformed(ActionEvent)
+}
+class mvc.view.View.buttonListener2 {
++ void actionPerformed(ActionEvent)
+}
+class mvc.view.View.menuListener {
++ void actionPerformed(ActionEvent)
+}
+class mvc.view.View.diceListener {
+~ Dice dice1
+~ Dice dice2
+~ int c1
+~ int c2
++ void actionPerformed(ActionEvent)
+}
+class mvc.view.PayDayWindow {
+~ ImageIcon image
+~ int pChoice
++ int getPChoice()
++ String partOfLoan()
+}
+
+
+mvc.view.JLayeredPane <|-- mvc.view.JLayeredPaneExtension
+mvc.view.JFrame <|-- mvc.view.View
+mvc.view.View +.. mvc.view.View.cardListener
+mvc.view.ActionListener <|.. mvc.view.View.cardListener
+mvc.view.View +.. mvc.view.View.buttonListener1
+mvc.view.ActionListener <|.. mvc.view.View.buttonListener1
+mvc.view.View +.. mvc.view.View.buttonListener2
+mvc.view.ActionListener <|.. mvc.view.View.buttonListener2
+mvc.view.View +.. mvc.view.View.menuListener
+mvc.view.ActionListener <|.. mvc.view.View.menuListener
+mvc.view.View +.. mvc.view.View.diceListener
+mvc.view.ActionListener <|.. mvc.view.View.diceListener
+@enduml

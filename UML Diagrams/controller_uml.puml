@@ -1,0 +1,29 @@
+@startuml
+class mvc.controller.Controller {
++ Player p1
++ Position[] table
++ AllCardsStack RejectedCards
++ MailCardsStack MailCardsStack
++ DealCardsStack DealCardsStack
++ boolean start
++ int pointsP1
++ int pointsP2
++ Jackpot jackpot
++ ClassLoader cldr
++ void initGame()
++ void initTable()
++ {static} void positionSuffle(Position[])
++ void gameMonths(int)
++ void initCards()
++ void playingFirst(int,int)
++ void initBalance()
++ void jackpot(Player)
++ int isThursday(Player,int)
++ boolean isSunday(Player,int)
++ boolean gameFinish()
++ String gameWinner()
++ void throwAllCards(Player)
++ String[] gameLog()
++ String[][] readFile(String,String)
+}
+@enduml
